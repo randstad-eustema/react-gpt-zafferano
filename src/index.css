@@ -1,13 +1,101 @@
-body {
+:root {
+  --bg-color: #333;
+  --text-color: #fff;
+  --primary-color: #fd1591;
+  --bg-card-color: #444;
+}
+
+* {
+  box-sizing: border-box;
+}
+*:not(h1, h2, h3, h4, h5, h6) {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  padding: 0;
+}
+
+input,
+textarea {
+  background-color: var(--bg-card-color);
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px;
+  margin: auto;
+}
+button[type="submit"] {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 10px 20px;
+  margin: auto;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.btn {
+  background-color: #fff;
+  border: none;
+  font-family: inherit;
+  padding: 0.375rem 0.875rem;
+  cursor: pointer;
+}
+
+.btn__primary {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.page-container {
+  max-width: 75rem;
+  padding: 0 1.25rem;
+  margin: auto;
+}
+
+main {
+  margin: 2.5rem 0;
+}
+
+.card {
+  margin: 0.75rem 0;
+  background-color: var(--bg-card-color);
+  padding: 0.75rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 0.625rem;
+}
+.card__title {
+  color: var(--primary-color);
+  margin-top: 0;
+}
+
+footer {
+  border-top: 2px solid #fff;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+footer a {
+  color: inherit;
+}
+
+footer nav ul {
+  display: flex;
+  list-style: none;
+  gap: 10px;
 }
