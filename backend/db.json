@@ -1,0 +1,19 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Primo post",
+      "content": "Finale Inter - City"
+    },
+    {
+      "id": 2,
+      "title": "Secondo post",
+      "content": "Roland Garros finale Musetti - Sinner 😎"
+    },
+    {
+      "title": "Terzo Post",
+      "content": "Contenuto terzo post 🥹",
+      "id": 3
+    }
+  ]
+}

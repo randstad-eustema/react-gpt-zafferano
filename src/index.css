@@ -23,12 +23,18 @@ textarea {
   font-family: inherit;
 }
 
+.form__container {
+  padding: 1.25rem;
+}
 form {
   display: flex;
   flex-direction: column;
   gap: 10px;
   max-width: 500px;
   margin: auto;
+}
+form label {
+  font-size: 0.875rem;
 }
 button[type="submit"] {
   background-color: var(--primary-color);
@@ -72,15 +78,39 @@ main {
 }
 
 .card {
+  position: relative;
   margin: 0.75rem 0;
   background-color: var(--bg-card-color);
   padding: 0.75rem;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 0.625rem;
 }
+.card__delete {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem;
+  border: none;
+  background-color: var(--primary-color);
+  color: inherit;
+  font-weight: bold;
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .card__title {
   color: var(--primary-color);
   margin-top: 0;
+}
+
+.card__link {
+  color: inherit;
+  display: inline-block;
+  margin-top: 0.625rem;
+}
+.card__link::after {
+  content: " ➤";
 }
 
 footer {
@@ -98,4 +128,13 @@ footer nav ul {
   display: flex;
   list-style: none;
   gap: 10px;
+}
+
+.error {
+  text-align: center;
+  padding: 0.9375rem;
+  border: 2px solid red;
+  background-color: rgba(255, 0, 0, 0.2);
+  border-radius: 5px;
+  margin: 0.625rem 0;
 }
