@@ -162,3 +162,37 @@ footer nav ul {
   border-radius: 5px;
   margin: 0.625rem 0;
 }
+
+/*------------
+  DASHBOARD
+-------------*/
+.dashboard__links {
+  padding: 1.25rem;
+}
+.dashboard__links a {
+  color: #fd1591;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #444;
+}
+
+td span {
+  cursor: pointer;
+}
+.actions {
+  display: flex;
+  gap: 10px;
+}

@@ -6,6 +6,7 @@ import FormNewPost from "../components/FormNewPost";
 export default function AdminPostsPage() {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState("");
+
   async function handleAddPost(post) {
     try {
       const newPost = await PostsService.create(post);
@@ -15,9 +16,61 @@ export default function AdminPostsPage() {
       setError("Qualcosa è andato storto 🥺");
     }
   }
+
+  async function handleDeletePost(postId) {
+    try {
+      await PostsService.delete(postId);
+      setPosts(posts.filter((post) => post.id !== postId));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const data = await PostsService.readAll();
+        setPosts(data);
+        setError("");
+      } catch (error) {
+        setError(error);
+      }
+    })();
+  }, []);
+
   return (
     <>
       <h1>Gestione Posts</h1>
+      <section>
+        <h2>Lista Posts</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Titolo</th>
+              <th>Contenuto</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody>
+            {posts.map((post) => {
+              return (
+                <tr>
+                  <td>{post.id}</td>
+                  <td>{post.title}</td>
+                  <td>{post.content}</td>
+                  <td>
+                    <div className="actions">
+                      <span>✏️</span>
+                      <span onClick={() => handleDeletePost(post.id)}>🗑️</span>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </section>
       <FormNewPost error={error} onAddPost={handleAddPost} />
     </>
   );

@@ -37,6 +37,7 @@ export default function FormNewPost({ error, onAddPost }) {
         <textarea
           id="content"
           placeholder="Inserisci il contenuto"
+          rows={8}
           value={post.content}
           onChange={(e) => handleChange(e.target)}
         ></textarea>
