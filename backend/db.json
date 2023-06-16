@@ -1,4 +1,12 @@
 {
+  "users": [
+    {
+      "email": "samuele.madrigali@gmail.com",
+      "password": "$2a$10$ZTcIHDPe2ofzMJzp.jaIpe5Z6I9tzwDoqQSiXNwo8jtMfQfE1suK6",
+      "name": "Samuele",
+      "id": 1
+    }
+  ],
   "posts": [
     {
       "id": 1,
@@ -11,8 +19,8 @@
       "content": "Roland Garros finale Musetti - Sinner 😎"
     },
     {
-      "title": "Titolo terzo Post",
-      "content": "Ciao Ciao",
+      "title": "Prova",
+      "content": "Prova",
       "id": 3
     }
   ]

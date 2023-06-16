@@ -22,7 +22,7 @@ export default function AdminPostsPage() {
       await PostsService.delete(postId);
       setPosts(posts.filter((post) => post.id !== postId));
     } catch (error) {
-      console.log(error);
+      setError(error.message);
     }
   }
 
@@ -32,8 +32,8 @@ export default function AdminPostsPage() {
         const data = await PostsService.readAll();
         setPosts(data);
         setError("");
-      } catch (error) {
-        setError(error);
+      } catch (err) {
+        setError(err.message);
       }
     })();
   }, []);
@@ -55,7 +55,7 @@ export default function AdminPostsPage() {
           <tbody>
             {posts.map((post) => {
               return (
-                <tr>
+                <tr key={post.id}>
                   <td>{post.id}</td>
                   <td>{post.title}</td>
                   <td>{post.content}</td>

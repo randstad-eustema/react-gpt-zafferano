@@ -21,6 +21,7 @@ export default function HomePage() {
 
   return (
     <section>
+      <h2>Le ultime news</h2>
       {posts.length > 0 ? (
         posts.map((post) => <BaseCard key={post.id} {...post} />)
       ) : (

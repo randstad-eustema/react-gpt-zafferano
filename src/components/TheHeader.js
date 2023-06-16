@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import auth from "../helpers/auth";
 
 export default function TheHeader() {
   return (
@@ -12,9 +13,11 @@ export default function TheHeader() {
           <li>
             <Link to="/about-us">Chi Siamo</Link>
           </li>
-          <li>
-            <Link to="/admin">Dashboard</Link>
-          </li>
+          {auth.getToken() && (
+            <li>
+              <Link to="/admin">Dashboard</Link>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

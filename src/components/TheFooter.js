@@ -28,9 +28,9 @@ export default function TheFooter() {
           </li>
         </ul>
       </nav>
-      <button className="btn btn__primary" onClick={() => handlerClick("ciao")}>
-        Accedi
-      </button>
+      <Link className="btn btn__primary" to="/login">
+        Login
+      </Link>
     </footer>
   );
 }

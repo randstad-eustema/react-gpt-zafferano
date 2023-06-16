@@ -1,11 +1,10 @@
+import ApiClient from "./ApiClient";
+import auth from "../helpers/auth";
+
 const PostsService = {
   readById: async (postId) => {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}/posts/${postId}`
-      );
-      if (!response.ok) throw new Error("Page not found");
-      const data = await response.json();
+      const { data } = await ApiClient.get(`posts/${postId}`);
       return data;
     } catch (error) {
       throw error;
@@ -13,10 +12,7 @@ const PostsService = {
   },
   readAll: async () => {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}/posts`
-      );
-      const data = await response.json();
+      const { data } = await ApiClient.get(`posts`);
       return data;
     } catch (error) {
       throw error;
@@ -24,13 +20,7 @@ const PostsService = {
   },
   delete: async (id) => {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}/posts/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
-      const data = await response.json();
+      const { data } = await ApiClient.delete(`posts/${id}`);
       return data;
     } catch (error) {
       throw error;
@@ -38,17 +28,7 @@ const PostsService = {
   },
   create: async (payload) => {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}/posts`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
-      const data = await response.json();
+      const { data } = await ApiClient.post(`post`, payload);
       return data;
     } catch (error) {
       throw error;
