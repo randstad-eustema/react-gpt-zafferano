@@ -1,22 +1,32 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+// Layouts
+import BaseLayout from "./layouts/BaseLayout";
+
+// Public pages
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import PostPage from "./pages/PostPage";
 import ErrorPage from "./pages/ErrorPage";
-import TheHeader from "./components/TheHeader";
-import TheFooter from "./components/TheFooter";
+
+// Private Pages
+import AdminHomePage from "./pages/AdminHomePage";
+import AdminPostsPage from "./pages/AdminPostsPage";
 
 function App() {
   return (
     <BrowserRouter>
-      <TheHeader />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/posts/:id" element={<PostPage />} />
-        <Route path="/about-us" element={<AboutPage />} />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="/" element={<BaseLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/posts/:id" element={<PostPage />} />
+          <Route path="/about-us" element={<AboutPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Route>
+        <Route path="/admin" element={<BaseLayout />}>
+          <Route index element={<AdminHomePage />} />
+          <Route path="/admin/posts" element={<AdminPostsPage />} />
+        </Route>
       </Routes>
-      <TheFooter />
     </BrowserRouter>
   );
 }
