@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UsersService from "../services/UsersService";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const { setUser, setIsLoggedIn } = useAuth();
 
   const [error, setError] = useState("");
-  const [user, setUser] = useState({
+  const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
@@ -15,16 +17,18 @@ export default function LoginPage() {
     // contattare api in POST http://localhost:3001/login
     e.preventDefault();
     try {
-      await UsersService.login(user);
+      const data = await UsersService.login(credentials);
+      setIsLoggedIn(true);
+      setUser(data.user);
       navigate("/admin");
     } catch (err) {
-      setError(err.message);
+      setError(err);
     }
   }
 
   function handleField(target) {
-    setUser({
-      ...user,
+    setCredentials({
+      ...credentials,
       [target.id]: target.value,
     });
   }
@@ -39,7 +43,7 @@ export default function LoginPage() {
             id="email"
             type="email"
             placeholder="Inserisci la tua email"
-            value={user.email}
+            value={credentials.email}
             onChange={(e) => handleField(e.target)}
           />
           <label htmlFor="password">Password</label>
@@ -47,7 +51,7 @@ export default function LoginPage() {
             id="password"
             type="password"
             placeholder="Inserisci la tua password"
-            value={user.password}
+            value={credentials.password}
             onChange={(e) => handleField(e.target)}
           />
           <button className="btn btn_primary" type="submit">

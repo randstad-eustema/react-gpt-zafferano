@@ -1,29 +1,30 @@
+import BaseCrud from "./BaseCrud";
 import auth from "../helpers/auth";
 
-const UsersService = {
-  login: async (payload) => {
+class Users extends BaseCrud {
+  async login(payload) {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
-      const data = await response.json();
-      if (!response.ok) throw new Error(data);
-
+      const { data } = await this._apiClient.post("/login", payload);
       auth.setToken(data.accessToken);
       auth.setUser(data.user);
-
       return data;
+    } catch (error) {
+      console.log(error.response.data);
+      throw error.response.data;
+    }
+  }
+
+  async logout() {
+    try {
+      // chiama API per il logout
+      auth.removeAll();
+      return true;
     } catch (error) {
       throw error;
     }
-  },
-};
+  }
+}
+
+const UsersService = new Users("users");
 
 export default UsersService;

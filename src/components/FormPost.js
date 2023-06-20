@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const initialPostState = {
   title: "",
   content: "",
 };
 
-export default function FormNewPost({ error, onAddPost }) {
+export default function FormNewPost({
+  editPost,
+  setEditPost,
+  error,
+  onSubmit,
+}) {
   const [post, setPost] = useState(initialPostState);
+
+  useEffect(() => {
+    if (editPost !== null) setPost(editPost);
+  }, [editPost]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddPost(post);
+    onSubmit(post);
     setPost(initialPostState);
+  }
+
+  function handleReset() {
+    setPost(initialPostState);
+    setEditPost(null);
   }
 
   function handleChange(target) {
@@ -23,7 +37,9 @@ export default function FormNewPost({ error, onAddPost }) {
 
   return (
     <div className="form__container">
-      <h3 style={{ textAlign: "center" }}>Inserisci un nuovo Post</h3>
+      <h3 style={{ textAlign: "center" }}>
+        {editPost ? "Modifica il post" : "Inserisci un nuovo Post"}
+      </h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Titolo</label>
         <input
@@ -41,8 +57,11 @@ export default function FormNewPost({ error, onAddPost }) {
           value={post.content}
           onChange={(e) => handleChange(e.target)}
         ></textarea>
+        <button className="btn" type="button" onClick={handleReset}>
+          Annulla
+        </button>
         <button className="btn btn_primary" type="submit">
-          Crea
+          {editPost ? "Salva" : "Crea"}
         </button>
       </form>
       {error && <div className="error">{error}</div>}

@@ -16,7 +16,7 @@ export default function PostPage() {
         navigate("/page-404");
       }
     })();
-  }, []);
+  }, [id, navigate]);
 
   return (
     <>

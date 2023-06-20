@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import auth from "../helpers/auth";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function TheHeader() {
+  const { isLoggedIn } = useAuth();
+
   return (
     <header>
       <h1 style={{ textAlign: "center" }}>👨‍🍳 GPT Zafferano</h1>
@@ -13,7 +15,7 @@ export default function TheHeader() {
           <li>
             <Link to="/about-us">Chi Siamo</Link>
           </li>
-          {auth.getToken() && (
+          {isLoggedIn && (
             <li>
               <Link to="/admin">Dashboard</Link>
             </li>

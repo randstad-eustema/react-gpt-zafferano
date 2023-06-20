@@ -9,19 +9,29 @@
   ],
   "posts": [
     {
-      "id": 1,
-      "title": "Primo post",
-      "content": "Finale Inter - City"
-    },
-    {
-      "id": 2,
-      "title": "Secondo post",
-      "content": "Roland Garros finale Musetti - Sinner 😎"
-    },
-    {
-      "title": "Prova",
-      "content": "Prova",
+      "title": "La sfogliatella, dolce di origine napoletana",
+      "content": "La sfogliatella è uno dei dolci italiani più famosi, in particolare è di origine napoletana. Si tratta di una pasta sfoglia ripiena di crema di ricotta, grano cotto, scorza d'arancia e cannella. La sfogliatella è un dolce che richiede una certa abilità nella preparazione della pasta sfoglia, ma il risultato è un dolce morbido e croccante allo stesso tempo, perfetto con un caffè espresso. Prova a prepararlo seguendo la nostra ricetta e delizierai i tuoi ospiti con un dolce tipico italiano!",
       "id": 3
+    },
+    {
+      "title": "Ricetta: Linguine alle vongole",
+      "content": "Oggi vi presentiamo una ricetta semplice e deliziosa: Linguine alle vongole. Per la pasta, cuocete i linguine in acqua salata finché non sono al dente. Nel frattempo, in una padella, fate soffriggere aglio, peperoncino e prezzemolo in olio extravergine d'oliva. Aggiungete quindi le vongole e lasciatele aprire a fuoco vivo. Scolate la pasta e versatela nella padella con la salsa. Saltate il tutto per qualche minuto e servite con una spolverata di prezzemolo fresco. Buon appetito!",
+      "id": 4
+    },
+    {
+      "title": "Come preparare la pasta al pomodoro perfetta",
+      "content": "La pasta al pomodoro è uno dei piatti più semplici della cucina italiana ma per renderla perfetta ci sono dei segreti da seguire. Innanzitutto, scegliere il tipo di pasta giusto: spaghetti o linguine sono le opzioni classiche. Inoltre, la salsa di pomodoro deve essere fatta con pomodori freschi e maturi, aglio, olio e basilico. Infine, ricordate di scolare bene la pasta e condirla direttamente nel piatto. Divertitevi a personalizzarla con pecorino o peperoncino.",
+      "id": 5
+    },
+    {
+      "title": "La ricetta perfetta per il tiramisù",
+      "content": "Il tiramisù è uno dei dessert italiani più famosi al mondo. Ecco la ricetta perfetta per prepararlo: 500g di mascarpone, 4 uova, 80g di zucchero, 200g di savoiardi, una tazza di caffè, cacao amaro in polvere. Separate i tuorli dagli albumi, montate gli albumi a neve ferma, unite il mascarpone con i tuorli e lo zucchero e amalgamate bene. In un'altra ciotola, mescolate il caffè e il liquore. Inzuppate i savoiardi e posizionateli in una teglia. Versate metà della crema sopra i savoiardi, poi ripetete il processo con un secondo strato di savoiardi e crema. Cospargete con il cacao amaro in polvere. Refrigerate per almeno 3 ore prima di servire.",
+      "id": 6
+    },
+    {
+      "title": "La ricetta perfetta per la lasagna",
+      "content": "La lasagna è uno dei piatti più amati in Italia. La sua preparazione richiede un po' di tempo, ma il risultato finale è sempre soddisfacente. Per la pasta, occorrono uova e farina, mentre per il ripieno si possono utilizzare diverse varianti, come la classica bolognese o quella vegetariana con spinaci e ricotta. La differenza la fa il bechamel, una salsa bianca che dona cremosità e un sapore delicato. Concedetevi questo piacere e preparate la vostra lasagna casalinga!",
+      "id": 7
     }
   ]
 }

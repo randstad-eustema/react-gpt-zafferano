@@ -11,6 +11,10 @@ const auth = {
   setUser: (user) => {
     sessionStorage.setItem("user", JSON.stringify(user));
   },
+  removeAll: () => {
+    sessionStorage.removeItem("accessToken");
+    sessionStorage.removeItem("user");
+  },
 };
 
 export default auth;

@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function TheFooter() {
   // const navFooter = ["Home Page", "Chi Siamo", "Le ultime news"];
-
-  function handlerClick(text) {
-    console.log(text);
-  }
-
+  const { isLoggedIn } = useAuth();
   return (
     <footer>
       <nav>
@@ -28,9 +25,15 @@ export default function TheFooter() {
           </li>
         </ul>
       </nav>
-      <Link className="btn btn__primary" to="/login">
-        Login
-      </Link>
+      {isLoggedIn ? (
+        <Link className="btn btn__primary" to="/logout">
+          Logout
+        </Link>
+      ) : (
+        <Link className="btn btn__primary" to="/login">
+          Login
+        </Link>
+      )}
     </footer>
   );
 }

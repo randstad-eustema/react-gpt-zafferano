@@ -1,39 +1,7 @@
-import ApiClient from "./ApiClient";
-import auth from "../helpers/auth";
+import BaseCrud from "./BaseCrud";
 
-const PostsService = {
-  readById: async (postId) => {
-    try {
-      const { data } = await ApiClient.get(`posts/${postId}`);
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  },
-  readAll: async () => {
-    try {
-      const { data } = await ApiClient.get(`posts`);
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  },
-  delete: async (id) => {
-    try {
-      const { data } = await ApiClient.delete(`posts/${id}`);
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  },
-  create: async (payload) => {
-    try {
-      const { data } = await ApiClient.post(`post`, payload);
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  },
-};
+class Posts extends BaseCrud {}
 
-export default PostsService;
+const PostService = new Posts("posts");
+
+export default PostService;

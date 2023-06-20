@@ -1,16 +1,43 @@
 import { useState, useEffect } from "react";
 
 import PostsService from "../services/PostsService";
-import FormNewPost from "../components/FormNewPost";
+import AiService from "../services/AiService";
+import FormPost from "../components/FormPost";
 
 export default function AdminPostsPage() {
   const [posts, setPosts] = useState([]);
+  const [editPost, setEditPost] = useState(null);
   const [error, setError] = useState("");
 
   async function handleAddPost(post) {
     try {
       const newPost = await PostsService.create(post);
       setPosts([...posts, newPost]);
+      setError("");
+    } catch (error) {
+      setError("Qualcosa è andato storto 🥺");
+    }
+  }
+
+  async function handleAiPostGenerator() {
+    try {
+      const data = await AiService.sendMessage(`
+        Crea un articolo per un blog di cucina di massimo 200 caratteri in formato JSON con le seguenti proprietà:
+        title: in cui inserirai il titolo dell'articolo, content: in cui inserirai il contenuto dell'articolo
+      `);
+      await handleAddPost(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleEditPost(post) {
+    try {
+      const postUpdated = await PostsService.update(post.id, post);
+      setPosts(
+        posts.map((elm) => (elm.id === postUpdated.id ? postUpdated : elm))
+      );
+      setEditPost(null);
       setError("");
     } catch (error) {
       setError("Qualcosa è andato storto 🥺");
@@ -61,7 +88,7 @@ export default function AdminPostsPage() {
                   <td>{post.content}</td>
                   <td>
                     <div className="actions">
-                      <span>✏️</span>
+                      <span onClick={() => setEditPost(post)}>✏️</span>
                       <span onClick={() => handleDeletePost(post.id)}>🗑️</span>
                     </div>
                   </td>
@@ -71,7 +98,15 @@ export default function AdminPostsPage() {
           </tbody>
         </table>
       </section>
-      <FormNewPost error={error} onAddPost={handleAddPost} />
+      <button className="btn btn__primary" onClick={handleAiPostGenerator}>
+        Genera tramite AI
+      </button>
+      <FormPost
+        editPost={editPost}
+        setEditPost={setEditPost}
+        error={error}
+        onSubmit={editPost ? handleEditPost : handleAddPost}
+      />
     </>
   );
 }
