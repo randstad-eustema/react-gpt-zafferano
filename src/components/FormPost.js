@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import useForm from "../hooks/useForm";
 
 const initialPostState = {
   title: "",
@@ -11,28 +12,21 @@ export default function FormNewPost({
   error,
   onSubmit,
 }) {
-  const [post, setPost] = useState(initialPostState);
+  const [post, handleChange, resetForm, setValues] = useForm(initialPostState);
 
   useEffect(() => {
-    if (editPost !== null) setPost(editPost);
-  }, [editPost]);
+    if (editPost !== null) setValues(editPost);
+  }, [editPost, setValues]);
 
   function handleSubmit(e) {
     e.preventDefault();
     onSubmit(post);
-    setPost(initialPostState);
+    resetForm();
   }
 
   function handleReset() {
-    setPost(initialPostState);
+    resetForm();
     setEditPost(null);
-  }
-
-  function handleChange(target) {
-    setPost({
-      ...post,
-      [target.id]: target.value,
-    });
   }
 
   return (
